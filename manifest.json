@@ -1,0 +1,21 @@
+{
+  "name": "Tap to Win",
+  "short_name": "TapWin",
+  "description": "A fun and engaging game!",
+  "start_url": "/index.html",
+  "display": "standalone",
+  "background_color": "#ffffff",
+  "theme_color": "#317EFB",
+  "icons": [
+	{
+	  "src": "/keos192.png",
+	  "sizes": "192x192",
+	  "type": "image/png"
+	},
+	{
+	  "src": "/keos512.png",
+	  "sizes": "256x256",
+	  "type": "image/png"
+	}
+  ]
+}
