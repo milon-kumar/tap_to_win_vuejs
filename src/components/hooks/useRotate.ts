@@ -79,9 +79,10 @@ export function useRotate (props: PropsType, emit: Function) {
 
   checkProbability()
 
-  // 检测总概率是否为 100
+  //检测总概率是否为 100
   function checkProbability () {
     if (probabilityTotal.value !== 100) {
+      console.log("Total Probability",probabilityTotal.value)
       throw new Error('Prizes Is Error: Sum of probabilities is not 100!')
     }
     return true

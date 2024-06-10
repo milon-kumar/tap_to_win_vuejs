@@ -2,12 +2,26 @@
 import { QrcodeStream } from "vue-qrcode-reader"
 import { ref } from "vue";
 import { useRouter } from "vue-router";
+import axios from "axios"
+import { getUrlEndpoint } from "../../libs/helper";
+
 const router = useRouter();
 const scanValue = ref()
-const onDetact = (event) => {
+const onDetact = async (event) => {
   if (event[0]?.rawValue) {
     scanValue.value = event[0]?.rawValue;
-    router.push('/tap-to-win')
+
+    if (scanValue.value) {
+      console.log(scanValue.value)
+      localStorage.setItem('url',getUrlEndpoint(scanValue.value))
+      const response = await axios.get(`${scanValue.value}?app_token=keos_app`)
+
+      if (response.data.data === false) {
+        router.push('/setting')
+      } else {
+        router.push('/tap-to-win')
+      }
+    }
   } else {
     alert("Sonething Want wrong . Try again")
     console.log('Something want wrong');
